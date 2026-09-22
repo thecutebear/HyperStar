@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://ngmm15n08dt8"]
+
+[ext_resource type="Script" uid="uid://5lhg7q5yl0lh" path="res://laser.gd" id="1_6vqwg"]
+[ext_resource type="Texture2D" uid="uid://ydbqugdvq6ma" path="res://laser.png" id="2_g6b45"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(1200, 10)
+
+[node name="Laser" type="Node2D" unique_id=404934958]
+rotation = 3.1415927
+script = ExtResource("1_6vqwg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=675539253]
+position = Vector2(870.73535, -181.969)
+scale = Vector2(0.13035299, 0.07684844)
+texture = ExtResource("2_g6b45")
+offset = Vector2(-6800, 2300)
+flip_h = true
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1901898550]
+points = PackedVector2Array(0, 0, 1200, 0)
+default_color = Color(0.75686276, 0.2, 0.24705882, 1)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1274656599]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1607943105]
+position = Vector2(600, 0)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
